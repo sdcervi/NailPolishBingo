@@ -9,6 +9,7 @@ primaryNavContents += '<ul class="navbar-nav mr-auto">';
 primaryNavContents += '<li class="nav-item" id="nav-home"><a class="nav-link" href="/">Home</a></li>';
 primaryNavContents += '<li class="nav-item" id="nav-stash"><a class="nav-link" href="/stash/">Stash</a></li>';
 primaryNavContents += '<li class="nav-item" id="nav-library"><a class="nav-link" href="/library/">Library</a></li>';
+primaryNavContents += '<li class="nav-item" id="nav-combos"><a class="nav-link" href="/combos/">Combos</a></li>';
 primaryNavContents += '<li class="nav-item" id="nav-about"><a class="nav-link" href="/about/">About</a></li>';
 primaryNavContents += '<li class="nav-item" id="nav-faq"><a class="nav-link" href="/faq/">FAQ</a></li>';
 primaryNavContents += '<li class="nav-item" id="nav-feedback"><a class="nav-link" href="/feedback/">Feedback</a></li>';
