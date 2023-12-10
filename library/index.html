@@ -4,13 +4,15 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="A visual stash tracker for nail polish enthusiasts">
+	<meta name="description" content="A visual checklist for Pokemon Home collectors, with all alt forms and variants">
 	<meta name="author" content="Stephanie Cervi">
-	<title>About || Nail Polish Bingo</title>
+	<title>Library || Living Pok&eacute;Dex Tracker</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/style.css" rel="stylesheet">
+	
+	<style>button.signin{display:none!important;}</style>
 	
 	<!-- Favicons -->
 	<link rel="apple-touch-icon" href="/assets/favicons/apple-touch-icon.png" sizes="180x180">
@@ -34,13 +36,13 @@
 	<!--link rel="manifest" href="./manifest.json"-->
 	
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7LX2491E7"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-BZ5WJZEXZ8"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}
 		gtag('js', new Date());
 
-		gtag('config', 'G-Q7LX2491E7');
+		gtag('config', 'G-BZ5WJZEXZ8');
 	</script>
 
 	<!-- FIREBASE -->
@@ -61,6 +63,10 @@
 		  to avoid connecting the SDK to running emulators.
 		--> 
 	<script defer src="/__/firebase/init.js?useEmulator=true"></script>
+	
+	<!-- Login UI from Firebase -->
+	<script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+	<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -73,50 +79,15 @@
 
 <main class="flex-shrink-0" role="main">
 	
-	<section class="container">
+	<div class="container" id="profileData">
 		
-		<div class="row">
+		<noscript>It looks like you&rsquo;ve disabled JavaScript, or your browser doesn&rsquo;t support it. To see the content for this website, please enable JavaScript.</noscript>
 		
-			<div class="col col-12 col-lg-8 col-xl-9">
+		<h1>Library</h1>
 		
-				<h1>About Nail Polish Bingo</h1>
-
-				<p>This stash tracker web app is tailored to nail polish enthusiasts, to help you organize and catalog your entire collection.</p>
-
-				<p>We originally developed this as a passion project for our own use, to keep track of our growing <a href="https://www.holotaco.com/" target="_blank">Holo Taco</a> collections. A few other options exist, like the <a href="https://docs.google.com/spreadsheets/d/1NzRWMdQngZg_xnehoUtjtvUnc4nIaSbqUBqmE7KwB8g/edit#gid=186001220" target="_blank">official Holo Taco Tracker</a> and the <a href="https://docs.google.com/spreadsheets/d/1UpAq1COY4xKPDq8CPqeI2v4v49vPUZ78uVxePL33-5Q/edit#gid=1935088350" target="_blank">All The Combos Spreadsheet</a>, but we wanted one that is more user-friendly, works on our phones, and cloud-syncs across all platforms and devices without any headaches. Google Sheets is notoriously terrible on iOS, and we knew we could build a better user experience.</p>
-
-				<p>Have feedback, questions, or general comments?  <a href="../feedback/">Get in touch via this form</a>.</p>
-
-				<p>Want to support further development of this project?  <a href="../donate/">Donate via Ko-fi, Venmo, or Paypal here</a>, and thank you for your support!</p>
-
-				<h2>Continuing development</h2>
-
-				<p>We manage tracking of bugs, to-do items, and feature requests over at the <a href="https://github.com/sdcervi/NailPolishBingo/" target="_blank">Nail Polish Bingo GitHub site</a>.</p>
-
-				<p><a href="https://github.com/sdcervi/NailPolishBingo/commits" target="_blank">Click here to view the most up-to-date changelog</a>.</p>
-
-				<p>If you have a feature request, came across a bug or error, or otherwise want to reach out, you can either <a href="https://github.com/sdcervi/NailPolishBingo/issues/new/choose" target="_blank">submit a new issue on GitHub and browse existing ones there</a>, or <a href="../feedback/">send me an email about it</a>.</p>
+		<h2>Holo Taco</h2>
 		
-			</div>
-			
-			<div class="col col-12 col-lg-4 col-xl-3 shout-out">
-
-				<h2 class="h4">Team members</h2>
-
-				<p><strong>Stephanie Cervi</strong><br>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Web developer &amp; designer<br>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://stephaniecervi.design">stephaniecervi.design</a></p>
-				
-				<p><strong>Kiera-Oona</strong><br>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UX/alpha testing, swatcher<br>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.youtube.com/@kieraoona">youtube.com/@kieraoona</a><br>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.instagram.com/kieraoona/">instagram.com/kieraoona</a></p>
-
-			</div>
-			
-		</div>
-			
-	</section>
+		<div id="libraryContent"></div>
 	
 </main>
 	
@@ -126,11 +97,13 @@
 <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="/js/nav.js" type="text/javascript"></script>
 <script src="/js/cookieBanner.js" type="text/javascript"></script>
+<script defer src="/js/library.json" type="text/javascript"></script>
+<script defer src="/js/library.js" type="text/javascript"></script>
 <script defer src="/js/auth.js" type="text/javascript"></script>
 	
 <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
 <script>
-  kofiWidgetOverlay.draw('nailpolishbingo', {
+  kofiWidgetOverlay.draw('pokedexapp', {
     'type': 'floating-chat',
     'floating-chat.donateButton.text': 'Donate',
     'floating-chat.donateButton.background-color': '#00b9fe',

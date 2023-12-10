@@ -1,5 +1,4 @@
-const totalPokemon = 2908;	
-
+/*
 function changeCollapse () {
 	const user = firebase.auth().currentUser;
 	if (user) {
@@ -13,7 +12,9 @@ function changeCollapse () {
 		console.log ('Error changing user settings.');
 	}
 }
+*/
 
+/*
 function changeDexDisplay () {
 	const dexID = event.target.id;
 	const user = firebase.auth().currentUser;
@@ -30,6 +31,7 @@ function changeDexDisplay () {
 		console.log ('Error updating dex preferences.');
 	}
 }
+*/
 
 // Fetch the database's profile data for the user and display it
 function getProfileData (user) {
@@ -60,11 +62,14 @@ function getProfileData (user) {
 	detailsContent += `<div class="col-12 text-center"><button class="btn btn-sm btn-link" onclick="resetPassword()">Send password reset email</button></div></row>`;
 	details.innerHTML = detailsContent;
 	
-	settingsContent = `<h4>Settings</h4><div class="form-check"><input class="form-check-input" type="checkbox" value="" id="setCollapse"><label class="form-check-label" for="setCollapse">Auto-collapse completed checklist sections</label></div>`
-	settingsContent += `<div class="form-check"><input class="form-check-input" type="checkbox" value="" id="setNationalNormal" checked onclick="changeDexDisplay('pokedex_displayNatNormal', 'setNationalNormal')"><label class="form-check-label" for="setNationalNormal">Display Normal form National Dex</label></div>`
-	settingsContent += `<div class="form-check"><input class="form-check-input" type="checkbox" value="" id="setAltNormal" checked onclick="changeDexDisplay('pokedex_displayAltNormal', 'setAltNormal')"><label class="form-check-label" for="setAltNormal">Display Normal form Alt Dex</label></div>`;
-	settingsContent += `<div class="form-check"><input class="form-check-input" type="checkbox" value="" id="setNationalShiny" checked onclick="changeDexDisplay('pokedex_displayNatShiny', 'setNationalShiny')"><label class="form-check-label" for="setNationalShiny">Display Shiny form National Dex</label></div>`
-	settingsContent += `<div class="form-check"><input class="form-check-input" type="checkbox" value="" id="setAltShiny" checked onclick="changeDexDisplay('pokedex_displayAltShiny', 'setAltShiny')"><label class="form-check-label" for="setAltShiny">Display Shiny form Alt Dex</label></div>`;
+	// Create user settings content
+	settingsContent = `<h4>Settings</h4>`;
+	settingsContent += `<p class="text-center">Coming soon!</p>`;
+	//settingsContent += `<div class="form-check"><input class="form-check-input" type="checkbox" value="" id="setCollapse"><label class="form-check-label" for="setCollapse">Auto-collapse completed checklist sections</label></div>`
+	//settingsContent += `<div class="form-check"><input class="form-check-input" type="checkbox" value="" id="setNationalNormal" checked onclick="changeDexDisplay('pokedex_displayNatNormal', 'setNationalNormal')"><label class="form-check-label" for="setNationalNormal">Display Normal form National Dex</label></div>`
+	//settingsContent += `<div class="form-check"><input class="form-check-input" type="checkbox" value="" id="setAltNormal" checked onclick="changeDexDisplay('pokedex_displayAltNormal', 'setAltNormal')"><label class="form-check-label" for="setAltNormal">Display Normal form Alt Dex</label></div>`;
+	//settingsContent += `<div class="form-check"><input class="form-check-input" type="checkbox" value="" id="setNationalShiny" checked onclick="changeDexDisplay('pokedex_displayNatShiny', 'setNationalShiny')"><label class="form-check-label" for="setNationalShiny">Display Shiny form National Dex</label></div>`
+	//settingsContent += `<div class="form-check"><input class="form-check-input" type="checkbox" value="" id="setAltShiny" checked onclick="changeDexDisplay('pokedex_displayAltShiny', 'setAltShiny')"><label class="form-check-label" for="setAltShiny">Display Shiny form Alt Dex</label></div>`;
 
 	document.getElementById('settings').innerHTML = settingsContent
 	// Display the user's statistics and settings
@@ -72,7 +77,7 @@ function getProfileData (user) {
 		const stats = document.getElementById('user-stats');
 		const data = doc.data();
 		
-		let trade = 0;
+		/*let trade = 0;
 		let place = 0;
 		let caught = 0;
 		const pokemonList = data.pokemon;
@@ -90,20 +95,22 @@ function getProfileData (user) {
 					caught++;
 					break;
 			}
-		}
+		}*/
 		
 		let statsContent = `<h4>Statistics</h4>`;
-		statsContent += `<div class="row"><div class="col-6"><strong>Pok&eacute;mon being traded</strong></p></div><div class="col-6"><p>${trade}</p></div></div>`;
-		statsContent += `<div class="row"><div class="col-6"><strong>Pok&eacute;mon ready to place</strong></p></div><div class="col-6"><p>${place}</p></div></div>`;
-		statsContent += `<div class="row"><div class="col-6"><strong>Pok&eacute;mon caught</strong></p></div><div class="col-6"><p>${caught}</p></div></div>`;
+		statsContent += `<p class="text-center">Coming soon!</p>`;
+		//statsContent += `<div class="row"><div class="col-6"><strong>Pok&eacute;mon being traded</strong></p></div><div class="col-6"><p>${trade}</p></div></div>`;
+		//statsContent += `<div class="row"><div class="col-6"><strong>Pok&eacute;mon ready to place</strong></p></div><div class="col-6"><p>${place}</p></div></div>`;
+		//statsContent += `<div class="row"><div class="col-6"><strong>Pok&eacute;mon caught</strong></p></div><div class="col-6"><p>${caught}</p></div></div>`;
 		//statsContent += `<div class="row"><div class="col-6"><strong>Living Dex progress</strong></p></div><div class="col-6"><p>${Math.floor((caught / totalPokemon) * 100)}%</p></div></div>`;
-		statsContent += `<div class="row"><div class="col-6"><strong>Living Dex progress</strong></p></div><div class="col-6"><div class="progress"><div class="progress-bar" role="progressbar" style="width: ${Math.floor((caught / totalPokemon) * 100)}%;" aria-valuenow="${Math.floor((caught / totalPokemon) * 100)}" aria-valuemin="0" aria-valuemax="100">${Math.floor((caught / totalPokemon) * 100)}%</div></div></div></div>`;
+		//statsContent += `<div class="row"><div class="col-6"><strong>Living Dex progress</strong></p></div><div class="col-6"><div class="progress"><div class="progress-bar" role="progressbar" style="width: ${Math.floor((caught / totalPokemon) * 100)}%;" aria-valuenow="${Math.floor((caught / totalPokemon) * 100)}" aria-valuemin="0" aria-valuemax="100">${Math.floor((caught / totalPokemon) * 100)}%</div></div></div></div>`;
 		stats.innerHTML = statsContent;
     });
 	
  	userData.get().then((doc) => {
 		const data = doc.data();
 		
+		/*
 		if (data.autoCollapse) {
 			document.getElementById('setCollapse').checked = data.autoCollapse;
 		} else {
@@ -138,6 +145,7 @@ function getProfileData (user) {
 			document.getElementById('setAltShiny').checked = true;
 		}
 		document.getElementById('setAltShiny').addEventListener("click", changeDexDisplay, false);
+		*/
 	}).catch((error) => {
 		console.log('Error getting user settings: ', error);
 	});
@@ -237,4 +245,9 @@ function deleteUser () {
 	}).catch((error) => {
 		console.error('Error deleting user data: ', error);
 	});
+}
+
+const totalProducts = {
+	holotacoCollections:	Object.keys(holotacoCollections).length,
+	holotacoProducts:		Object.keys(holotacoProducts).length
 }

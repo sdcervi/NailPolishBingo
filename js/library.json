@@ -1,0 +1,78 @@
+const library = {
+	holotaco: {
+		box_launch: {
+			"id":			"holo-taco-launch-collection",
+			"type":			"collection",
+			"name":			"Holo Taco Launch Collection",
+			"launchdate":	"2019-07-06",
+			"hasbox":		true,
+			"accessories":	false,
+			"products":		["royal-tea-blue", "one-coat-black", "flakie-taco", "linear-holo-taco", "scattered taco"]
+		},
+		royal_tea_blue: {
+			"id":			"royal-tea-blue",
+			"type":			"product",
+			"name":			"Royal-Tea Blue",
+			"launchdate":	"2019-07-06",
+			"retiredate":	"2023-01-07",
+			"restocked":	true,
+			"link":			"https://www.holotaco.com/products/royal-tea-blue-2021",
+			"color":		"blue",
+			"formula":		"creme",
+			alternatives:	[],
+			collections:	["holo-taco-launch-collection"]
+		},
+		one_coat_black: {
+			"id":			"one-coat-black",
+			"type":			"product",
+			"name":			"One Coat Black",
+			"launchdate":	"2019-07-06",
+			"retiredate":	"",
+			"restocked":	false,
+			"link":			"https://www.holotaco.com/products/one-coat-black",
+			"color":		"black",
+			"formula":		"creme",
+			alternatives:	[],
+			collections:	["holo-taco-launch-collection"]
+		},
+		flakie_holo_taco: {
+			"id":			"flakie-holo-taco",
+			"type":			"product",
+			"name":			"Flakie Holo Taco",
+			"launchdate":	"2019-07-06",
+			"retiredate":	"",
+			"restocked":	false,
+			"link":			"https://www.holotaco.com/products/flakie-holo-taco",
+			"color":		"holo",
+			"formula":		"topper",
+			alternatives:	[],
+			collections:	["holo-taco-launch-collection"]
+		},
+		linear_holo_taco: {
+			"id":			"linear-holo-taco",
+			"type":			"product",
+			"name":			"Linear Holo Taco",
+			"launchdate":	"2019-07-06",
+			"retiredate":	"",
+			"restocked":	false,
+			"link":			"https://www.holotaco.com/products/linear-holo-taco",
+			"color":		"holo",
+			"formula":		"topper",
+			alternatives:	[],
+			collections:	["holo-taco-launch-collection"]
+		},
+		scattered_holo_taco: {
+			"id":			"scattered-holo-taco",
+			"type":			"product",
+			"name":			"Scattered Holo Taco",
+			"launchdate":	"2019-07-06",
+			"retiredate":	"",
+			"restocked":	false,
+			"link":			"https://www.holotaco.com/products/scattered-holo-taco",
+			"color":		"holo",
+			"formula":		"topper",
+			alternatives:	[],
+			collections:	["holo-taco-launch-collection"]
+		}
+	}
+};
