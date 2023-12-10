@@ -9,7 +9,7 @@ Web application created with JavaScript and Firebase
 - [Project status](#project-status)
 
 ### Summary
-This tracker web app is tailored to nail polish enthusiasts, to help you organize and catalog your entire collection by brand and color.
+This tracker web app is tailored to nail polish enthusiasts, to help you organize and catalog your entire collection.
 
 Your progress syncs with the cloud automatically, and you can access your collection from any device with internet access.
 
