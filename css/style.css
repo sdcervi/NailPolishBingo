@@ -9,6 +9,9 @@ main { margin-top: 55px; padding-top: 2em; }
 .jumbotron p.lead { max-width: 800px; margin: 2em auto; }
 .jumbotron p:last-of-type { margin-bottom: 2em; }
 
+.shout-out { background-color: #eeeeee; padding: 1.5em; }
+.shout-out h2 { border-bottom: 1px solid lightgray; }
+
 .btn-link.focus, .btn-link:focus, .btn-link:hover { text-decoration: none; box-shadow: none; }
 a:focus, a:hover { text-decoration: none; color: deepskyblue; }
 ul.navbar-nav li.active a.nav-link { color: white; opacity: 1; }
