@@ -1,6 +1,6 @@
 const library = {
-	holotaco: {
-		box_launch: {
+	holo_taco: {
+		holo_taco_launch_collection: {
 			"id":			"holo-taco-launch-collection",
 			"type":			"collection",
 			"name":			"Holo Taco Launch Collection",
@@ -20,7 +20,7 @@ const library = {
 			"color":		"blue",
 			"formula":		"creme",
 			alternatives:	[],
-			collections:	["holo-taco-launch-collection"]
+			collections:	["holo_taco_launch_collection"]
 		},
 		one_coat_black: {
 			"id":			"one-coat-black",
@@ -33,7 +33,7 @@ const library = {
 			"color":		"black",
 			"formula":		"creme",
 			alternatives:	[],
-			collections:	["holo-taco-launch-collection"]
+			collections:	["holo_taco_launch_collection"]
 		},
 		flakie_holo_taco: {
 			"id":			"flakie-holo-taco",
@@ -46,7 +46,7 @@ const library = {
 			"color":		"holo",
 			"formula":		"topper",
 			alternatives:	[],
-			collections:	["holo-taco-launch-collection"]
+			collections:	["holo_taco_launch_collection"]
 		},
 		linear_holo_taco: {
 			"id":			"linear-holo-taco",
@@ -59,7 +59,7 @@ const library = {
 			"color":		"holo",
 			"formula":		"topper",
 			alternatives:	[],
-			collections:	["holo-taco-launch-collection"]
+			collections:	["holo_taco_launch_collection"]
 		},
 		scattered_holo_taco: {
 			"id":			"scattered-holo-taco",
@@ -72,7 +72,7 @@ const library = {
 			"color":		"holo",
 			"formula":		"topper",
 			alternatives:	[],
-			collections:	["holo-taco-launch-collection"]
+			collections:	["holo_taco_launch_collection"]
 		}
 	}
 };
