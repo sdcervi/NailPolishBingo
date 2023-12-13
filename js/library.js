@@ -2,7 +2,7 @@ const libraryDiv = document.getElementById('libraryContent');
 
 function writeProduct (brand, productID, productDetails) {
 	// Get the human-readable brand name from the brand ID
-	const brandName = brand.replace("_", " ").replace(
+	const brandName = brand.replaceAll("_", " ").replace(
 		/\w\S*/g,
 		function(txt) {
 			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -24,30 +24,67 @@ function writeProduct (brand, productID, productDetails) {
 	
 	let productContent = "";
 	
+	productContent += `<div class="col library-product"><div class="card h-100">`;
+	productContent += `<div class="card-body"><div class="row row-cols-2">`;
+	productContent += `<div class="col">`;
 	productContent += `<img src="${productImage}" onerror="this.src='/assets/comingsoon.png';" alt="" />`;
-	productContent += `<p>${brandName}</p>`;
-	productContent += `<p>${productName}</p>`;
+	productContent += `</div>`;
+	productContent += `<div class="col">`;
+	productContent += `<h3 class="product-brand">${brandName}</h3>`;
+	productContent += `<h3 class="product-name">${productName}</h3>`;
 	
 	if (productType === "product") {
-		productContent += `<p>${productDetails.formula}</p>`;
-		productContent += `<p>Launched ${productDetails.launchdate}</p>`;
+		if (productDetails.formula === "creme") {
+			productContent += `<p class="product-formula">cr&egrave;me</p>`;
+		} else {
+			productContent += `<p class="product-formula">${productDetails.formula}</p>`;
+		}
+		productContent += `<p class="product-date"><strong>Launched:</strong> ${productDetails.launchdate}`;
 		if (productDetails.retireDate && !productDetails.restocked) {
-			productContent += `<p>Retired ${productDetails.retireDate}</p>`;
-			productContent += `<p>Alternatives: `;
+			productContent += `<br>`;
+			productContent += `<p class="product-date"><strong>Retired:</strong> ${productDetails.retireDate}</p>`;
+			productContent += `<p class="alternatives">Alternatives: `;
 			productDetails.alternatives.forEach(alternative => {
 				productContent += `<a href="${alternative[1]}">${alternative[0]}</a>`;
 			});
 			productContent += `</p>`;
 		} else {
-			productContent += `<p><a href="${productDetails.link}" class="btn btn-primary btn-sm">Shop now</a></p>`;
+			productContent += `</p>`;
+			if (!productDetails.retireDate) {
+				productContent += `<p class="product-link"><a href="${productDetails.link}" class="btn btn-primary btn-sm" target="_blank">Shop now</a></p>`;
+			}
 		}
-		productContent += `<p>In collections: `;
-		console.log (productDetails.collections);
+		productContent += `<p class="product-collections"><strong>In collections:</strong></p>`;
+		productContent += `<ul class="product-collections">`;
 		productDetails.collections.forEach(collection => {
-			productContent += `${library[brand][collection].name}`;
+			productContent += `<li>${library[brand][collection].name}</li>`;
 		});
-		productContent += `</p>`;
+		productContent += `</ul>`;
+	} else if (productType === "collection") {
+		productContent += `<p class="product-date"><strong>Launched:</strong> ${productDetails.launchdate}`;
+		if (productDetails.retireDate && !productDetails.restocked) {
+			productContent += `<br>`;
+			productContent += `<p class="product-date"><strong>Retired:</strong> ${productDetails.retireDate}</p>`;
+			productContent += `<p class="alternatives">Alternatives: `;
+			productDetails.alternatives.forEach(alternative => {
+				productContent += `<a href="${alternative[1]}">${alternative[0]}</a>`;
+			});
+			productContent += `</p>`;
+		} else {
+			productContent += `</p>`;
+			if (productDetails.retireDate == "") {
+				productContent += `<p class="product-link"><a href="${productDetails.link}" class="btn btn-primary btn-sm" target="_blank">Shop now</a></p>`;
+			}
+		}
+		productContent += `<p class="product-collections"><strong>In collection:</strong></p>`;
+		productContent += `<ul class="product-collections">`;
+		productDetails.products.forEach(product => {
+			productContent += `<li>${library[brand][product].name}</li>`;
+		});
+		productContent += `</ul>`;
 	}
+	
+	productContent += `</div></div></div></div></div>`;
 	
 	return productContent;
 }
@@ -72,7 +109,7 @@ function writeLibrary () {
 		libraryDivContents += productHTML;
 	});
 	
-	libraryDiv.innerHTML = libraryDivContents;
+	libraryDiv.innerHTML = `<div class="row row-cols-1 row-cols-lg-2 row-cols-xxl-3">${libraryDivContents}</div>`;
 }
 
 writeLibrary();

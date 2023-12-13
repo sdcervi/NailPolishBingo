@@ -59,6 +59,16 @@ button.btn-edit { position: absolute; }
 
 .page404 { text-align: center; margin-top: 10vw; }
 
+.library-product { margin-bottom: 1em; }
+.library-product img { max-width: 100%; height: auto; }
+.library-product h3.product-brand { text-transform: uppercase; font-size: 1.25em; font-weight: bold; margin-bottom: 0; color: lightslategray; }
+.library-product h3.product-name { font-size: 1em; font-weight: bold; margin-bottom: 0.25em; }
+.library-product p.product-formula { text-transform: capitalize; font-size: 0.9em; margin-bottom: 0.25em; }
+.library-product p.product-date { font-size: 0.85em; }
+.library-product p.product-link { font-size: 0.85em; }
+.library-product p.product-alternatives { font-size: 0.85em; }
+.library-product p.product-collections, ul.product-collections { font-size: 0.85em; margin-bottom: 0; }
+
 /* ------------------------------- MEDIA QUERIES -------------------------------- */
 
 @media only screen and (max-width: 495px) {
