@@ -4,6 +4,8 @@ main { margin-top: 55px; padding-top: 2em; }
 .clear { clear: both; }
 #cookie-banner { position: fixed; bottom: 0; left: .75rem; width: 100%; z-index: 999; border-radius: 0; display: none; padding: 0.5em; font-size: 0.9em; align-items: center; }
 
+h1, h2, h3, h4, h5, h6 { font-family: Georgia, serif; }
+
 .jumbotron { margin-top: 10vh; }
 .jumbotron h1 img { height: 1em; width: 1em; margin-top: -0.25em; }
 .jumbotron p.lead { max-width: 800px; margin: 2em auto; }
@@ -65,6 +67,7 @@ button.btn-edit { position: absolute; }
 .library-product h3.product-name { font-size: 1em; font-weight: bold; margin-bottom: 0.25em; }
 .library-product p.product-formula { text-transform: capitalize; font-size: 0.9em; margin-bottom: 0.25em; }
 .library-product p.product-date { font-size: 0.85em; }
+.library-product p.product-date img { width: 1em; height: auto; }
 .library-product p.product-link { font-size: 0.85em; }
 .library-product p.product-alternatives { font-size: 0.85em; }
 .library-product p.product-collections, ul.product-collections { font-size: 0.85em; margin-bottom: 0; }

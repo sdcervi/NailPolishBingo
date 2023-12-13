@@ -39,10 +39,10 @@ function writeProduct (brand, productID, productDetails) {
 		} else {
 			productContent += `<p class="product-formula">${productDetails.formula}</p>`;
 		}
-		productContent += `<p class="product-date"><strong>Launched:</strong> ${productDetails.launchdate}`;
-		if (productDetails.retireDate && !productDetails.restocked) {
+		productContent += `<p class="product-date"><img src="/assets/icons/launch.svg" alt="Launched" /> ${productDetails.launchdate}`;
+		if (!(productDetails.retiredate == "") && !productDetails.restocked) {
 			productContent += `<br>`;
-			productContent += `<p class="product-date"><strong>Retired:</strong> ${productDetails.retireDate}</p>`;
+			productContent += `<img src="/assets/icons/retire.svg" alt="Retired" /> ${productDetails.retiredate}</p>`;
 			productContent += `<p class="alternatives">Alternatives: `;
 			productDetails.alternatives.forEach(alternative => {
 				productContent += `<a href="${alternative[1]}">${alternative[0]}</a>`;
@@ -50,7 +50,7 @@ function writeProduct (brand, productID, productDetails) {
 			productContent += `</p>`;
 		} else {
 			productContent += `</p>`;
-			if (!productDetails.retireDate) {
+			if (productDetails.restocked) {
 				productContent += `<p class="product-link"><a href="${productDetails.link}" class="btn btn-primary btn-sm" target="_blank">Shop now</a></p>`;
 			}
 		}
@@ -61,18 +61,15 @@ function writeProduct (brand, productID, productDetails) {
 		});
 		productContent += `</ul>`;
 	} else if (productType === "collection") {
-		productContent += `<p class="product-date"><strong>Launched:</strong> ${productDetails.launchdate}`;
-		if (productDetails.retireDate && !productDetails.restocked) {
+		productContent += `<p class="accessories">Includes collectible box</p>`;
+		productContent += `<p class="product-date"><img src="/assets/icons/launch.svg" alt="Launched" /> ${productDetails.launchdate}`;
+		if (!(productDetails.retiredate == "") && !productDetails.restocked) {
 			productContent += `<br>`;
-			productContent += `<p class="product-date"><strong>Retired:</strong> ${productDetails.retireDate}</p>`;
-			productContent += `<p class="alternatives">Alternatives: `;
-			productDetails.alternatives.forEach(alternative => {
-				productContent += `<a href="${alternative[1]}">${alternative[0]}</a>`;
-			});
-			productContent += `</p>`;
+			console.log (productDetails);
+			productContent += `<img src="/assets/icons/retire.svg" alt="Retired" /> ${productDetails.retiredate}</p>`;
 		} else {
 			productContent += `</p>`;
-			if (productDetails.retireDate == "") {
+			if (productDetails.restocked) {
 				productContent += `<p class="product-link"><a href="${productDetails.link}" class="btn btn-primary btn-sm" target="_blank">Shop now</a></p>`;
 			}
 		}
