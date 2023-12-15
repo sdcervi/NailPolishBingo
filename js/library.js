@@ -1,4 +1,9 @@
 const libraryDiv = document.getElementById('libraryContent');
+const dateOptions = {
+	year: 'numeric',
+	month: 'short',
+	day: 'numeric'
+};
 
 function writeProduct (brand, productID, productDetails) {
 	// Get the human-readable brand name from the brand ID
@@ -39,20 +44,30 @@ function writeProduct (brand, productID, productDetails) {
 		} else {
 			productContent += `<p class="product-formula">${productDetails.formula}</p>`;
 		}
-		productContent += `<p class="product-date"><img src="/assets/icons/launch.svg" alt="Launched" /> ${productDetails.launchdate}`;
+		const launchDate = new Date(Date.parse(productDetails.launchdate));
+		productContent += `<p class="product-date"><img src="/assets/icons/launch.svg" alt="Launched" /> ${launchDate.toLocaleDateString('en-US', dateOptions)}`;
 		if (!(productDetails.retiredate == "") && !productDetails.restocked) {
 			productContent += `<br>`;
-			productContent += `<img src="/assets/icons/retire.svg" alt="Retired" /> ${productDetails.retiredate}</p>`;
+			const retireDate = new Date(Date.parse(productDetails.retiredate));
+			productContent += `<img src="/assets/icons/retire.svg" alt="Retired" /> ${retireDate.toLocaleDateString('en-US', dateOptions)}</p>`;
 			productContent += `<p class="alternatives">Alternatives: `;
 			productDetails.alternatives.forEach(alternative => {
 				productContent += `<a href="${alternative[1]}">${alternative[0]}</a>`;
 			});
 			productContent += `</p>`;
 		} else {
-			productContent += `</p>`;
 			if (productDetails.restocked) {
-				productContent += `<p class="product-link"><a href="${productDetails.link}" class="btn btn-primary btn-sm" target="_blank">Shop now</a></p>`;
+				productContent += `<br>`;
+				const retireDate = new Date(Date.parse(productDetails.retiredate));
+				productContent += `<img src="/assets/icons/retire.svg" alt="Retired" /> ${retireDate.toLocaleDateString('en-US', dateOptions)} (restocked)</p>`;
 			}
+			productContent += `</p>`;
+			productContent += `<p class="product-link">`;
+			productContent += `<a href="${productDetails.link}" class="btn btn-primary btn-sm" target="_blank">Shop now</a>`;
+			if (productDetails.video != "") {
+				productContent += `&nbsp;<a href="${productDetails.video}" class="btn btn-primary btn-sm" target="_blank"><img src="/assets/icons/video.svg" alt="" /> Watch video</a>`;
+			}
+			productContent += `</p>`;
 		}
 		productContent += `<p class="product-collections"><strong>In collections:</strong></p>`;
 		productContent += `<ul class="product-collections">`;
@@ -62,18 +77,23 @@ function writeProduct (brand, productID, productDetails) {
 		productContent += `</ul>`;
 	} else if (productType === "collection") {
 		productContent += `<p class="accessories">Includes collectible box</p>`;
-		productContent += `<p class="product-date"><img src="/assets/icons/launch.svg" alt="Launched" /> ${productDetails.launchdate}`;
+		const launchDate = new Date(Date.parse(productDetails.launchdate));
+		productContent += `<p class="product-date"><img src="/assets/icons/launch.svg" alt="Launched" /> ${launchDate.toLocaleDateString('en-US', dateOptions)}`;
 		if (!(productDetails.retiredate == "") && !productDetails.restocked) {
 			productContent += `<br>`;
-			console.log (productDetails);
-			productContent += `<img src="/assets/icons/retire.svg" alt="Retired" /> ${productDetails.retiredate}</p>`;
+			const retireDate = new Date(Date.parse(productDetails.retiredate));
+			productContent += `<img src="/assets/icons/retire.svg" alt="Retired" /> ${retireDate.toLocaleDateString('en-US', dateOptions)}</p>`;
+			productContent += `<p class="product-link"><a href="${productDetails.video}" class="btn btn-primary btn-sm" target="_blank"><img src="/assets/icons/video.svg" alt="" /> Watch video</a></p>`;
 		} else {
 			productContent += `</p>`;
-			if (productDetails.restocked) {
-				productContent += `<p class="product-link"><a href="${productDetails.link}" class="btn btn-primary btn-sm" target="_blank">Shop now</a></p>`;
+			productContent += `<p class="product-link">`;
+			productContent += `<a href="${productDetails.link}" class="btn btn-primary btn-sm" target="_blank">Shop now</a>`;
+			if (productDetails.video != "") {
+				productContent += `&nbsp;<a href="${productDetails.video}" class="btn btn-primary btn-sm" target="_blank">Watch launch video</a>`;
 			}
+			productContent += `</p>`;
 		}
-		productContent += `<p class="product-collections"><strong>In collection:</strong></p>`;
+		productContent += `<p class="product-collections"><strong>Featuring:</strong></p>`;
 		productContent += `<ul class="product-collections">`;
 		productDetails.products.forEach(product => {
 			productContent += `<li>${library[brand][product].name}</li>`;
@@ -110,33 +130,3 @@ function writeLibrary () {
 }
 
 writeLibrary();
-
-
-
-
-
-
-
-
-
-// Grab marketplaces
-/*const marketplaceArray = Object.entries(data.channels.marketplaces).sort(function (a, b) {
-	if (a[0] < b[0]) {
-		return -1;
-	} else if (a[0] > b[0]) {
-		return 1;
-	} else {
-		return 0;
-	}
-});
-const marketplaceChannels = ['cults3d', 'pinshape', 'thangs', 'printables', 'patreon', 'creality'];
-marketplaceArray.forEach(channel => {
-	if (channel[1] && marketplaceChannels.includes(channel[0])) {
-		marketplaceNames.push(channel[0]);
-	}
-});*/
-
-// Write products to page
-/*productArray.forEach(product => {
-	writeProduct (product[0], product[1]);
-});*/
